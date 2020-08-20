@@ -20,10 +20,10 @@ body {
   color: white;
 }
 .calc-button-row {
-  border: 3px solid blue;
   display: flex;
   flex-flow: nowrap;
   justify-content: space-between;
+  margin-bottom: 0.5%;
 }
 .screen {
   text-align: right;
@@ -38,4 +38,16 @@ body {
   font-size: 40px;
   height: 100px;
   flex-basis: 24.5%;
+}
+.calc-button:hover {
+  background-color: #ebebeb;
+}
+.calc-button:active {
+  background-color: #bbbcbe;
+}
+.double {
+  flex-basis: 49.65%;
+}
+.triple {
+  flex-basis: 74.8%;
 }
