@@ -31,3 +31,11 @@ body {
   padding: 20px 5px;
   font-size: 40px;
 }
+.calc-button {
+  background-color: #d8d9db;
+  color: #000000;
+  border: none;
+  font-size: 40px;
+  height: 100px;
+  flex-basis: 24.5%;
+}
