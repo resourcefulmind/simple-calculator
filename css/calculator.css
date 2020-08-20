@@ -21,6 +21,9 @@ body {
 }
 .calc-button-row {
   border: 3px solid blue;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: space-between;
 }
 .screen {
   text-align: right;
