@@ -11,11 +11,18 @@ let previousOperator;
 const screen = document.querySelector('.screen');
 
 //starting with what happens when a user clicks one of the buttons
-function buttonClick() {}
+function buttonClick(value) {
+    console.log(value);
+}
 
 // the init function will be the function that gets called once and sets everything up
 function init () {
-
+// now we set up our event listeners
+document.querySelector('.calc-buttons')
+.addEventListener('click', function(event) {
+    // refer to the code for the button click on line 14
+    buttonClick(event.target.innerText);
+})
 }
 
 // then call init
