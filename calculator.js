@@ -15,6 +15,11 @@ function buttonClick(value) {
     console.log(value);
 }
 
+// creates a separate function for handling numbers and symbols below
+
+function handleSymbol() {}
+function handleNumber() {}
+
 // the init function will be the function that gets called once and sets everything up
 function init () {
 // now we set up our event listeners
