@@ -23,13 +23,20 @@ function buttonClick(value) {
 
 // creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
 
-function handleSymbol(symbol) {}
+function handleSymbol(symbol) {
+    // Let's first handle the part that let's us clear numbers
+    if (symbol === 'C') {
+        buffer = '0';
+        runningTotal = 0;
+    }
+}
 function handleNumber(numberString) {
     if (buffer === "0") {
         buffer = numberString;
     } else {
         buffer = buffer + numberString;
     }
+    // this makes the numbers display on the screen when they are clicked
     screen.innerText = buffer;
 }
 
