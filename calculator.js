@@ -30,6 +30,7 @@ function handleNumber(numberString) {
     } else {
         buffer = buffer + numberString;
     }
+    screen.innerText = buffer;
 }
 
 // the init function will be the function that gets called once and sets everything up
