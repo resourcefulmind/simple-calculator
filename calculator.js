@@ -12,13 +12,25 @@ const screen = document.querySelector('.screen');
 
 //starting with what happens when a user clicks one of the buttons
 function buttonClick(value) {
-    console.log(value);
+    if (isNaN(value)) {
+        // this is not a number
+        handleSymbol(value);
+    } else {
+        // this is a number
+        handleNumber(value);
+    }
 }
 
-// creates a separate function for handling numbers and symbols below
+// creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
 
-function handleSymbol() {}
-function handleNumber() {}
+function handleSymbol(symbol) {}
+function handleNumber(numberString) {
+    if (buffer === "0") {
+        buffer = numberString;
+    } else {
+        buffer = buffer + numberString;
+    }
+}
 
 // the init function will be the function that gets called once and sets everything up
 function init () {
