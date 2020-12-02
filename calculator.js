@@ -19,6 +19,8 @@ function buttonClick(value) {
         // this is a number
         handleNumber(value);
     }
+    // this makes the numbers display on the screen when they are clicked
+    screen.innerText = buffer;
 }
 
 // creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
@@ -36,8 +38,6 @@ function handleNumber(numberString) {
     } else {
         buffer = buffer + numberString;
     }
-    // this makes the numbers display on the screen when they are clicked
-    screen.innerText = buffer;
 }
 
 // the init function will be the function that gets called once and sets everything up
