@@ -26,15 +26,44 @@ function buttonClick(value) {
 // creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
 
 function handleSymbol(symbol) {
-    // Let's first handle the part that let's us clear numbers
-    // if (symbol === 'C') {
-    //     buffer = '0';
-    //     runningTotal = 0;
-    // }
-    // the above works but we can use switch statements instead since we have multiple if elses
-
-    
+// we can use switch statements instead since we have multiple if elses
+    switch (symbol) {
+        case 'C':
+            buffer = '0';
+            runningTotal = 0;
+            break;
+        case '&plus':
+        case '&minus':
+        case '&times':
+        case '&divide':
+            handleMath(symbol); 
+            // the above handleMath(symbol) was created separately so we do not have to do all the math in here
+            break;
+    }
 }
+
+function handleMath(symbol) {
+    if (buffer === '0') {
+        // no need to do anything, just return
+        return;
+    }
+
+    const intBuffer = parseInt(buffer);
+
+    if (runningTotal === 0) {
+        runningTotal = intBuffer;
+    } else {
+        flushOperation(intBuffer);
+    }
+
+    previousOperator = symbol;
+
+    buffer = '0';
+}
+
+// flush operation is going to be the thing to actually do the math
+
+
 function handleNumber(numberString) {
     if (buffer === "0") {
         buffer = numberString;
