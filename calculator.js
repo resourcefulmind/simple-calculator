@@ -27,10 +27,13 @@ function buttonClick(value) {
 
 function handleSymbol(symbol) {
     // Let's first handle the part that let's us clear numbers
-    if (symbol === 'C') {
-        buffer = '0';
-        runningTotal = 0;
-    }
+    // if (symbol === 'C') {
+    //     buffer = '0';
+    //     runningTotal = 0;
+    // }
+    // the above works but we can use switch statements instead since we have multiple if elses
+
+    
 }
 function handleNumber(numberString) {
     if (buffer === "0") {
