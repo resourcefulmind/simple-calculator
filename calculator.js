@@ -32,10 +32,10 @@ function handleSymbol(symbol) {
             buffer = '0';
             runningTotal = 0;
             break;
-        case '&plus':
-        case '&minus':
-        case '&times':
-        case '&divide':
+        case '&plus;':
+        case '&minus;':
+        case '&times;':
+        case '&divide;':
             handleMath(symbol); 
             // the above handleMath(symbol) was created separately so we do not have to do all the math in here
             break;
@@ -65,7 +65,7 @@ function handleMath(symbol) {
 
 
 function handleNumber(numberString) {
-    if (buffer === "0") {
+    if (buffer === '0') {
         buffer = numberString;
     } else {
         buffer = buffer + numberString;
