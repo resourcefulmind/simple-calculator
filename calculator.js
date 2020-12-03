@@ -18,10 +18,10 @@ function buttonClick(value) {
     } else {
         // this is a number
         handleNumber(value);
-    }
+    };
     // this makes the numbers display on the screen when they are clicked
     screen.innerText = buffer;
-}
+};
 
 // creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
 
@@ -39,38 +39,50 @@ function handleSymbol(symbol) {
             handleMath(symbol); 
             // the above handleMath(symbol) was created separately so we do not have to do all the math in here
             break;
-    }
-}
+    };
+};
 
 function handleMath(symbol) {
     if (buffer === '0') {
         // no need to do anything, just return
         return;
-    }
+    };
 
     const intBuffer = parseInt(buffer);
+    // turning the string into a number with the above
 
     if (runningTotal === 0) {
         runningTotal = intBuffer;
     } else {
         flushOperation(intBuffer);
-    }
+    };
 
     previousOperator = symbol;
 
     buffer = '0';
-}
+};
+
+function flushOperation(intBuffer) {
+    if (previousOperator === '&plus;') {
+        runningTotal += intBuffer;
+    } else if (previousOperator === '&minus;') {
+        runningTotal -= intBuffer;
+    } else if (previousOperator === '&times;') {
+        runningTotal *= intBuffer;
+    } else {
+        runningTotal /= intBuffer;
+    };
+};
 
 // flush operation is going to be the thing to actually do the math
-
 
 function handleNumber(numberString) {
     if (buffer === '0') {
         buffer = numberString;
     } else {
         buffer = buffer + numberString;
-    }
-}
+    };
+};
 
 // the init function will be the function that gets called once and sets everything up
 function init () {
@@ -79,8 +91,8 @@ document.querySelector('.calc-buttons')
 .addEventListener('click', function(event) {
     // refer to the code for the button click on line 14
     buttonClick(event.target.innerText);
-})
-}
+});
+};
 
 // then call init
 init();
