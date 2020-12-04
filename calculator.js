@@ -18,43 +18,53 @@ function buttonClick(value) {
     } else {
         // this is a number
         handleNumber(value);
-    };
+    }
     // this makes the numbers display on the screen when they are clicked
-    screen.innerText = buffer;
-};
+    rerender();
+}
 
 // creates a separate function for handling numbers and symbols below and this is really all you have to do to get numbers working correctly
 
-function handleSymbol(symbol) {
+function handleSymbol(value) {
 // we can use switch statements instead since we have multiple if elses
-    switch (symbol) {
-        case 'C':
-            buffer = '0';
+    switch (value) {
+        case "C":
+            buffer = "0";
             runningTotal = 0;
             break;
-        case '=':
+        case "=":
             if (previousOperator === null) {
                 //you need two numbers to do math 
                 return;
             }
             flushOperation(parseInt(buffer));
             previousOperator = null;
-            buffer = runningTotal;
+            buffer = +runningTotal;
             runningTotal = 0;
+            break; 
+        case '←':
+            if (buffer.length === 1) {
+                buffer = '0';
+            } else {
+                buffer = buffer.substring(0, buffer.length - 1);
+            }
             break;
-
-        case '&plus;':
-        case '&minus;':
-        case '&times;':
-        case '&divide;':
-            handleMath(symbol); 
+        case '+':
+        case '−':
+        case '×':
+        case '÷':
+            handleMath(value); 
             // the above handleMath(symbol) was created separately so we do not have to do all the math in here
             break;
-    };
-};
+    }
+}
 
-function handleMath(symbol) {
-    if (buffer === '0') {
+function rerender() {
+    screen.innerText = buffer;
+}
+
+function handleMath(value) {
+    if (buffer === "0") {
         // no need to do anything, just return
         return;
     };
@@ -68,41 +78,42 @@ function handleMath(symbol) {
         flushOperation(intBuffer);
     };
 
-    previousOperator = symbol;
+    previousOperator = value;
 
-    buffer = '0';
-};
+    buffer = "0";
+}
 
 function flushOperation(intBuffer) {
-    if (previousOperator === '+') {
+    if (previousOperator === "+") {
         runningTotal += intBuffer;
-    } else if (previousOperator === '−') {
+    } else if (previousOperator === "−") {
         runningTotal -= intBuffer;
-    } else if (previousOperator === '×') {
+    } else if (previousOperator === "×") {
         runningTotal *= intBuffer;
     } else {
         runningTotal /= intBuffer;
-    };
-};
+    }
+}
 
 // flush operation is going to be the thing to actually do the math
 
-function handleNumber(numberString) {
-    if (buffer === '0') {
-        buffer = numberString;
+function handleNumber(value) {
+    if (buffer === "0") {
+        buffer = value;
     } else {
-        buffer += numberString;
+        buffer += value;
     }
 }
 
 // the init function will be the function that gets called once and sets everything up
 function init () {
 // now we set up our event listeners
-document.querySelector('.calc-buttons')
+document
+.querySelector(".calc-buttons")
 .addEventListener('click', function(event) {
     // refer to the code for the button click on line 14
     buttonClick(event.target.innerText);
-})
+});
 }
 
 // then call init
