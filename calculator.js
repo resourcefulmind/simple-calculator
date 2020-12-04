@@ -32,6 +32,17 @@ function handleSymbol(symbol) {
             buffer = '0';
             runningTotal = 0;
             break;
+        case '=':
+            if (previousOperator === null) {
+                //you need two numbers to do math 
+                return;
+            }
+            flushOperation(parseInt(buffer));
+            previousOperator = null;
+            buffer = runningTotal;
+            runningTotal = 0;
+            break;
+
         case '&plus;':
         case '&minus;':
         case '&times;':
@@ -72,7 +83,6 @@ function flushOperation(intBuffer) {
     } else {
         runningTotal /= intBuffer;
     };
-    console.log('running total', runningTotal);
 };
 
 // flush operation is going to be the thing to actually do the math
@@ -81,9 +91,9 @@ function handleNumber(numberString) {
     if (buffer === '0') {
         buffer = numberString;
     } else {
-        buffer = buffer + numberString;
-    };
-};
+        buffer += numberString;
+    }
+}
 
 // the init function will be the function that gets called once and sets everything up
 function init () {
@@ -92,8 +102,8 @@ document.querySelector('.calc-buttons')
 .addEventListener('click', function(event) {
     // refer to the code for the button click on line 14
     buttonClick(event.target.innerText);
-});
-};
+})
+}
 
 // then call init
 init();
