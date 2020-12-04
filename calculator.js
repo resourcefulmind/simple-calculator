@@ -8,11 +8,11 @@ let buffer = "0";
 let previousOperator;
 
 // next we grab the screen 
-const screen = document.querySelector('.screen');
+const screen = document.querySelector(".screen");
 
 //starting with what happens when a user clicks one of the buttons
 function buttonClick(value) {
-    if (isNaN(value)) {
+    if (isNaN(parseInt(value))) {
         // this is not a number
         handleSymbol(value);
     } else {
@@ -63,15 +63,16 @@ function handleMath(symbol) {
 };
 
 function flushOperation(intBuffer) {
-    if (previousOperator === '&plus;') {
+    if (previousOperator === '+') {
         runningTotal += intBuffer;
-    } else if (previousOperator === '&minus;') {
+    } else if (previousOperator === '−') {
         runningTotal -= intBuffer;
-    } else if (previousOperator === '&times;') {
+    } else if (previousOperator === '×') {
         runningTotal *= intBuffer;
     } else {
         runningTotal /= intBuffer;
     };
+    console.log('running total', runningTotal);
 };
 
 // flush operation is going to be the thing to actually do the math
